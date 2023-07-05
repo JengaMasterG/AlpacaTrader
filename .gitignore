@@ -1,0 +1,5 @@
+.venv_lin
+.venv_win
+data
+trade/__pycache__
+trade/tradingData.ipynb
