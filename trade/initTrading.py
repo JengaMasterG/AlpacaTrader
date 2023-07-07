@@ -12,6 +12,33 @@ file.close()
 class AccountData:
     
     def getAccount(PAPER):
+        if PAPER is True:
+            API_KEY = api_cred["Alpaca"]["paper"]["API_KEY_ID"]
+            SECRET_KEY = api_cred["Alpaca"]["paper"]["API_SECRET_KEY"]
+            file_paper = "data/paper.json"
+
+            file = open(file_paper, "rb")
+            acct_paper = json.load(file)
+            file.close()
+
+            number = acct_paper["account_number"]
+
+            return number, API_KEY, SECRET_KEY
+
+        else:
+            API_KEY = api_cred["Alpaca"]["live"]["API_KEY_ID"]
+            SECRET_KEY = api_cred["Alpaca"]["live"]["API_SECRET_KEY"]
+            file_live = "data/live.json"
+
+            file = open(file_live, "rb")
+            acct_live = json.load(file)
+            file.close()
+
+            number = acct_live["account_number"]
+
+            return number, API_KEY, SECRET_KEY           
+    
+    def updateAccount(PAPER):
 
         logging.info('TRADE: Begin Account Auto Refresh')
         """
