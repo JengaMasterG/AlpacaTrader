@@ -1,6 +1,7 @@
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
+import logging
 import json
 from datetime import datetime, timedelta
 from numpy import busday_count, sum

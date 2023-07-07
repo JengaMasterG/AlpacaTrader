@@ -1,3 +1,5 @@
+__pycache__
+.kivy
 .venv_lin
 .venv_win
 data

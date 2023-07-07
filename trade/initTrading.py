@@ -2,6 +2,7 @@ import json
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
+import logging
 
 #API Credentials
 file = open("data/keys.json", "rb")
@@ -10,13 +11,9 @@ file.close()
 
 class AccountData:
     
-    def __init__(
-        self,
-        PAPER: bool = True
-    ):
-        self.PAPER = PAPER
-    
     def getAccount(PAPER):
+
+        logging.info('TRADE: Begin Account Auto Refresh')
         """
         Downloads personal brokerage account data.
         Args:
@@ -35,6 +32,8 @@ class AccountData:
             file_json = "data/live.json"
 
         #Check Account Data
+        logging.info('TRADE: Getting account data...')
+        logging.info('TRADE: API_KEY: %s\nSECRET_KEY: %s\nPAPER: %s' % (API_KEY, SECRET_KEY, PAPER))
         trading_client = TradingClient(API_KEY, SECRET_KEY, paper=PAPER)
 
         account = trading_client.get_account()
@@ -47,3 +46,5 @@ class AccountData:
 
         with open(file_json, "w", encoding='utf-8') as f:
             json.dump(data, f, indent=4, sort_keys=True)
+
+        logging.info('TRADE: Account data saved.')
