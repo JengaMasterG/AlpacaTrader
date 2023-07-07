@@ -57,16 +57,17 @@ def manRefresh(PAPER):
         PAPER (bool): Chooses if the paper account should be used or not. True is paper trading. Enabled by default.
     """
 
-    AccountData.getAccount(PAPER)
+    AccountData.updateAccount(PAPER)
 
 class InitApp(App):
     
     #def on_start(self):
-        #self.auto_acct_refresh = autoRefresh(.001, AccountData.getAccount, PAPER=True)
+        #self.auto_acct_refresh = autoRefresh(.001, AccountData.updateAccount, PAPER=True)
         #self.auto_acct_refresh.start()
 
     def build(self):
-        return gui.MainScreen()
+        app = gui.MainScreen()
+        return app
         
     #def on_stop(self):
     #    self.auto_acct_refresh.stop()
